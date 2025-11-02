@@ -236,7 +236,7 @@ body {
     color:  #777;
 }
 
-.fillter-date {
+.filter-date {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -260,18 +260,6 @@ body {
 .btn-reset-order:hover {
     background: #bbbbbb;
 }
-
-.btn-control-large {
-    background: #b46b45;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 7px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
 /* Table */
 .table {
     width: 100%;

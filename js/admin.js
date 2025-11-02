@@ -1,26 +1,22 @@
-/* ======== KHỐI 1: HÀM KHỞI TẠO VÀ CHUNG ======== */
+/* KHỐI 1: HÀM KHỞI TẠO VÀ CHUNG */
 function checkLogin() {
     let currentUser = JSON.parse(localStorage.getItem("currentuser"));
-    // Nếu chưa login hoặc là user bình thường
     if (!currentUser || currentUser.userType === 0) {
         alert("Bạn cần đăng nhập admin để truy cập trang này!");
         window.location.href = "index.html";
         return false;
     }
 
-    // Hiển thị tên tài khoản
     const nameAcc = document.getElementById("name-acc");
     if (nameAcc) {
     nameAcc.innerHTML = currentUser.fullname;
   }
 }
 
-// Xử lý chuyển tab
 function setupTabs() {
     const sidebars = document.querySelectorAll(".sidebar-list-item.tab-content");
     const sections = document.querySelectorAll(".section");
 
-    // Tab nội dung
     sidebars.forEach((sidebar, i) => {
         sidebar.onclick = function(e){
             e.preventDefault();
@@ -31,7 +27,6 @@ function setupTabs() {
         };
     });
 
-    // Dashboard tab (Trang tổng quan)
     const dashboardTab = document.querySelector(".middle-sidebar .sidebar-list-item:first-child");
     if(dashboardTab){
         dashboardTab.onclick = function(e){
@@ -39,11 +34,10 @@ function setupTabs() {
             document.querySelector(".sidebar-list-item.active").classList.remove("active");
             document.querySelector(".section.active").classList.remove("active");
             this.classList.add("active");
-            sections[0].classList.add("active"); // dashboard
+            sections[0].classList.add("active"); 
         };
     }
 
-    // Nút bottom-sidebar "Trang chủ" mở dashboard 
     const homeBtn = document.querySelector(".bottom-sidebar .sidebar-list-item:first-child a");
     if(homeBtn){
         homeBtn.onclick = function(e){
@@ -64,7 +58,7 @@ function formatDate(date){
     return dd + "/" + mm + "/" + yyyy;
 }
 
-/* ======== KHỐI 2: QUẢN LÝ KHÁCH HÀNG ======== */
+/* KHỐI 2: QUẢN LÝ KHÁCH HÀNG */
 
 let updateAccount = document.getElementById("btn-update-account");
 
@@ -194,7 +188,6 @@ function deleteAccount(phone){
     }
 }
 
-// Đăng xuất
 document.getElementById("logout-acc").addEventListener("click",(e)=>{
     e.preventDefault();
     if(confirm("Bạn có chắc chắn muốn đăng xuất?")){
@@ -203,7 +196,7 @@ document.getElementById("logout-acc").addEventListener("click",(e)=>{
     }
 });
 
-/* ======== KHỐI 3: KHỞI CHẠY CHÍNH ======== */
+/* KHỐI 3: KHỞI CHẠY CHÍNH  */
 window.addEventListener("load", ()=>{
     checkLogin();
     setupTabs();
