@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <div id="admin-warning" class="warning">
+        <div class="warning-box">
+            <div><img src="https://png.pngtree.com/png-clipart/20230217/original/pngtree-stop-and-reject-sign-concept-png-image_8958043.png" alt="Cảnh báo" style="max-width: 100px;"></div>
+            <h1>Đây là trang dành cho <strong>Admin</strong></h1>
+            <p>Vui lòng đăng nhập để quản trị hệ thống.</p>
+            <button id="continue-admin" class="btn-yes">Đăng nhập</button>
+        </div>
+    </div>
     <div class="container">
         <aside class="sidebar">
             <div class="top-sidebar">
@@ -125,7 +133,7 @@
                         </form>
                     </div>
                     <div class="admin-control-right">
-                        <form action="" class="filter-date">
+                        <form class="filter-date">
                             <div>
                                 <label for="time-start">Từ</label>
                                 <input type="date" class="form-control-date" id="time-start-user" onchange="showUser()">
@@ -156,25 +164,21 @@
                 </div>
             </div>
 
-            <!-- Đơn hàng -->
             <div class="section" id="orders">
                 <h1 class="page-title">Đơn hàng</h1>
                 <p>Danh sách đơn hàng sẽ hiển thị tại đây...</p>
             </div>
 
-            <!-- Nhập hàng -->
             <div class="section" id="imports">
                 <h1 class="page-title">Nhập hàng</h1>
                 <p>Thông tin nhập hàng sẽ hiển thị tại đây...</p>
             </div>
 
-            <!-- Thống kê -->
             <div class="section" id="stats">
                 <h1 class="page-title">Thống kê</h1>
                 <p>Biểu đồ thống kê sẽ hiển thị tại đây...</p>
             </div>
 
-            <!-- Modal chỉnh sửa khách hàng -->
             <div class="modal">
                 <div class="modal-container">
                     <h3 class="modal-container-title edit-account-e">CHỈNH SỬA THÔNG TIN</h3>
@@ -206,7 +210,6 @@
                     </div>
                 </div>
             </div>
-
         </main>
     </div>
     <script src="./js/admin.js"></script>

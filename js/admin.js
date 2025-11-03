@@ -2,11 +2,12 @@
 function checkLogin() {
     let currentUser = JSON.parse(localStorage.getItem("currentuser"));
     if (!currentUser || currentUser.userType === 0) {
-        alert("Bạn cần đăng nhập admin để truy cập trang này!");
-        window.location.href = "index.html";
+        document.querySelector(".container").style.display = "none";
+        document.getElementById("admin-warning").style.display = "flex";
         return false;
     }
-
+    document.querySelector(".container").style.display = "flex";
+    document.getElementById("admin-warning").style.display = "none";
     const nameAcc = document.getElementById("name-acc");
     if (nameAcc) {
     nameAcc.innerHTML = currentUser.fullname;
@@ -133,8 +134,8 @@ function showUserArr(arr){
                     <td>${formatDate(account.join)}</td>
                     <td>${tinhtrang}</td>
                     <td class="control control-table">
-                        <button class="btn-edit" onclick="editAccount('${account.phone}')"><i class="fa-light fa-pen-to-square"></i></button>
-                        <button class="btn-delete" onclick="deleteAccount('${account.phone}')"><i class="fa-regular fa-trash"></i></button>
+                        <button class="btn-edit" onclick="editAccount('${account.phone}')"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn-delete" onclick="deleteAccount('${account.phone}')"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>`;
         });
@@ -192,7 +193,8 @@ document.getElementById("logout-acc").addEventListener("click",(e)=>{
     e.preventDefault();
     if(confirm("Bạn có chắc chắn muốn đăng xuất?")){
         localStorage.removeItem("currentuser");
-        window.location.href = "index.html";
+        document.querySelector(".container").style.display = "none";
+        document.getElementById("admin-warning").style.display = "flex";
     }
 });
 
@@ -201,6 +203,30 @@ window.addEventListener("load", ()=>{
     checkLogin();
     setupTabs();
     showUser();
+
     const resetButton = document.querySelector(".btn-reset-order");
     if(resetButton) resetButton.addEventListener("click", cancelSearchUser);
+
+    const btn = document.getElementById("continue-admin");
+    if (btn) {
+        btn.addEventListener("click", () => {
+        let currentUser = JSON.parse(localStorage.getItem("currentuser"));
+
+        if (!currentUser) {
+            alert("Bạn cần đăng nhập để tiếp tục!");
+            document.getElementById("admin-warning").style.display = "flex";
+            document.querySelector(".container").style.display = "none";
+            return;
+        }
+
+        if (currentUser.userType === 0) {
+            alert("Bạn không có quyền truy cập trang này!");
+            document.getElementById("admin-warning").style.display = "flex";
+            document.querySelector(".container").style.display = "none";
+            return;
+        }
+        document.querySelector(".container").style.display = "flex";
+        document.getElementById("admin-warning").style.display = "none";
+        });
+    }
 });
