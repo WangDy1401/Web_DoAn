@@ -1,0 +1,99 @@
+<h1>Hệ Thống Quản Lý Đơn Hàng & Tồn Kho</h1>
+
+    <h2>🛒 Quản Lý Đơn Đặt Hàng</h2>
+
+    <div class="form-section">
+        <h3>Tra Cứu Đơn Hàng</h3>
+        <div class="form-group">
+            <label for="searchDate">Ngày Đặt:</label>
+            <input type="date" id="searchDate">
+        </div>
+        <div class="form-group">
+            <label for="searchStatus">Trạng Thái:</label>
+            <select id="searchStatus">
+                <option value="">-- Tất cả --</option>
+                <option value="Chờ xử lý">Chờ xử lý</option>
+                <option value="Đã xác nhận">Đã xác nhận</option>
+                <option value="Đang vận chuyển">Đang vận chuyển</option>
+                <option value="Đã giao hàng">Đã giao hàng</option>
+            </select>
+        </div>
+        <button onclick="filterOrders()">Tra Cứu</button>
+        <button onclick="resetOrderFilter()">Xóa Lọc</button>
+    </div>
+
+    <div class="form-section">
+        <h3>+ Thêm Đơn Hàng Mới</h3>
+        <div class="form-group">
+            <label for="orderCode">Mã Đơn Hàng:</label>
+            <input type="text" id="orderCode" required>
+            <label for="orderCustomer">Khách Hàng:</label>
+            <input type="text" id="orderCustomer" required>
+            <label for="orderProductsInput">Sản Phẩm (cách nhau bằng dấu phẩy, ví dụ: SP01, SP03):</label>
+            <input type="text" id="orderProductsInput" required>
+            <label for="orderTotal">Tổng Tiền (VNĐ):</label>
+            <input type="number" id="orderTotal" required>
+        </div>
+        <div class="form-group">
+            <label for="orderStatus">Trạng Thái Ban Đầu:</label>
+            <select id="orderStatus">
+                <option value="Chờ xử lý">Chờ xử lý</option>
+                <option value="Đã xác nhận">Đã xác nhận</option>
+            </select>
+        </div>
+        <button onclick="addOrder()">Thêm Đơn Hàng</button>
+    </div>
+
+    <h4>Danh Sách Đơn Hàng</h4>
+    <table id="orderTable">
+        <thead>
+            <tr>
+                <th>Mã ĐH</th>
+                <th>Ngày Đặt</th>
+                <th>Khách Hàng</th>
+                <th>Sản Phẩm</th>
+                <th>Trạng Thái</th>
+                <th>Tổng Tiền</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Quản Lý Tồn Kho</h2>
+
+    <div class="form-section">
+        <h3>+ Thêm Sản Phẩm</h3>
+        <div class="form-group">
+            <label for="productCode">Mã SP:</label>
+            <input type="text" id="productCode" required>
+            <label for="productName">Tên Sản Phẩm:</label>
+            <input type="text" id="productName" required>
+        </div>
+        <div class="form-group">
+            <label for="currentStock">Tồn Kho Hiện Tại:</label>
+            <input type="number" id="currentStock" required>
+            <label for="safetyStock">Tồn Kho An Toàn:</label>
+            <input type="number" id="safetyStock" required>
+        </div>
+        <button onclick="addProduct()">Thêm/Cập Nhật Sản Phẩm</button>
+    </div>
+
+    <h4>Báo Cáo Tồn Kho</h4>
+    <table id="inventoryTable">
+        <thead>
+            <tr>
+                <th>Mã SP</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Tồn Kho</th>
+                <th>Tồn Kho An Toàn</th>
+                <th>Cảnh Báo</th>
+                <th>Thao Tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
